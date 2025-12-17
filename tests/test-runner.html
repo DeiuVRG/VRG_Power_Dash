@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRG Power Dash - Test Suite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #00cc99;
+        }
+
+        .test-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .test-section h2 {
+            color: #0066cc;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .test-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border-left: 4px solid #6c757d;
+        }
+
+        .test-item.pass {
+            border-left-color: #28a745;
+            background: rgba(40, 167, 69, 0.1);
+        }
+
+        .test-item.fail {
+            border-left-color: #dc3545;
+            background: rgba(220, 53, 69, 0.1);
+        }
+
+        .test-item.warning {
+            border-left-color: #ffc107;
+            background: rgba(255, 193, 7, 0.1);
+        }
+
+        .test-name {
+            flex: 1;
+        }
+
+        .test-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .test-status.pass {
+            background: #28a745;
+            color: white;
+        }
+
+        .test-status.fail {
+            background: #dc3545;
+            color: white;
+        }
+
+        .test-status.warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .test-status.pending {
+            background: #6c757d;
+            color: white;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .summary-card.total { border-top: 4px solid #0066cc; }
+        .summary-card.passed { border-top: 4px solid #28a745; }
+        .summary-card.failed { border-top: 4px solid #dc3545; }
+        .summary-card.warnings { border-top: 4px solid #ffc107; }
+
+        .summary-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .summary-card.total .summary-number { color: #0066cc; }
+        .summary-card.passed .summary-number { color: #28a745; }
+        .summary-card.failed .summary-number { color: #dc3545; }
+        .summary-card.warnings .summary-number { color: #ffc107; }
+
+        .btn-run {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0066cc 0%, #00cc99 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-run:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 102, 204, 0.4);
+        }
+
+        .btn-run:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0066cc, #00cc99);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .test-details {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 VRG Power Dash - Test Suite</h1>
+
+        <button class="btn-run" id="runTests" onclick="runAllTests()">
+            ▶ Run All Tests
+        </button>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="summary">
+            <div class="summary-card total">
+                <div class="summary-number" id="totalTests">0</div>
+                <div>Total Tests</div>
+            </div>
+            <div class="summary-card passed">
+                <div class="summary-number" id="passedTests">0</div>
+                <div>Passed</div>
+            </div>
+            <div class="summary-card failed">
+                <div class="summary-number" id="failedTests">0</div>
+                <div>Failed</div>
+            </div>
+            <div class="summary-card warnings">
+                <div class="summary-number" id="warningTests">0</div>
+                <div>Warnings</div>
+            </div>
+        </div>
+
+        <div id="testResults"></div>
+    </div>
+
+    <script src="tests.js"></script>
+</body>
+</html>
