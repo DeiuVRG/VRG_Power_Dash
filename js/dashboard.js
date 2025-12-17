@@ -23,44 +23,136 @@ function updateDashboardValues() {
 // Update values every 3 seconds
 setInterval(updateDashboardValues, 3000);
 
-// Device switch handlers
+// ===== Toast Notification System =====
+const ToastManager = {
+    container: null,
+
+    init() {
+        // Create toast container if it doesn't exist
+        if (!this.container) {
+            this.container = document.createElement('div');
+            this.container.className = 'toast-container';
+            this.container.id = 'toastContainer';
+            document.body.appendChild(this.container);
+        }
+    },
+
+    show(options) {
+        this.init();
+
+        const { title, message, type = 'info', duration = 3000 } = options;
+
+        const iconMap = {
+            success: 'bi-check-circle-fill',
+            error: 'bi-x-circle-fill',
+            warning: 'bi-exclamation-triangle-fill',
+            info: 'bi-info-circle-fill',
+            off: 'bi-power'
+        };
+
+        const toast = document.createElement('div');
+        toast.className = `toast-notification toast-${type}`;
+        toast.innerHTML = `
+            <i class="bi ${iconMap[type]} toast-icon"></i>
+            <div class="toast-content">
+                <div class="toast-title">${title}</div>
+                <div class="toast-message">${message}</div>
+            </div>
+            <button class="toast-close" aria-label="Close">
+                <i class="bi bi-x"></i>
+            </button>
+            <div class="toast-progress"></div>
+        `;
+
+        // Close button functionality
+        toast.querySelector('.toast-close').addEventListener('click', () => {
+            this.remove(toast);
+        });
+
+        this.container.appendChild(toast);
+
+        // Auto-remove after duration
+        setTimeout(() => {
+            this.remove(toast);
+        }, duration);
+
+        return toast;
+    },
+
+    remove(toast) {
+        if (toast && toast.parentElement) {
+            toast.classList.add('removing');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }
+    }
+};
+
+// ===== Ripple Effect Function =====
+function createRipple(event, element, isOn) {
+    const ripple = document.createElement('span');
+    ripple.className = `ripple-effect ${isOn ? 'ripple-on' : 'ripple-off'}`;
+
+    const rect = element.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 2;
+
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+
+    element.appendChild(ripple);
+
+    // Remove ripple after animation
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+}
+
+// ===== Device Names Map =====
+const deviceNames = {
+    device1: 'Living Room Lights',
+    device2: 'Air Conditioner',
+    device3: 'Smart TV',
+    device4: 'Coffee Maker',
+    device5: 'Desktop Computer',
+    device6: 'WiFi Router'
+};
+
+// ===== Device Switch Handlers with Ripple Effect =====
 const deviceSwitches = document.querySelectorAll('.device-switch');
 
 deviceSwitches.forEach(deviceSwitch => {
-    deviceSwitch.addEventListener('change', function() {
+    deviceSwitch.addEventListener('change', function(event) {
         const deviceId = this.id;
         const isOn = this.checked;
-        
-        // Create toast notification
-        const toastHtml = `
-            <div class="toast align-items-center text-white ${isOn ? 'bg-success' : 'bg-secondary'} border-0" role="alert">
-                <div class="d-flex">
-                    <div class="toast-body">
-                        <i class="bi ${isOn ? 'bi-check-circle-fill' : 'bi-x-circle-fill'} me-2"></i>
-                        Device ${isOn ? 'turned ON' : 'turned OFF'} successfully
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-                </div>
-            </div>
-        `;
-        
-        const toastContainer = document.createElement('div');
-        toastContainer.style.position = 'fixed';
-        toastContainer.style.top = '100px';
-        toastContainer.style.right = '20px';
-        toastContainer.style.zIndex = '9999';
-        toastContainer.innerHTML = toastHtml;
-        document.body.appendChild(toastContainer);
-        
-        const toast = new bootstrap.Toast(toastContainer.querySelector('.toast'));
-        toast.show();
-        
+        const deviceItem = this.closest('.device-item');
+        const deviceName = deviceNames[deviceId] || 'Device';
+
+        // Create ripple effect
+        createRipple(event, deviceItem, isOn);
+
+        // Add pulse animation to switch
+        this.classList.add('switching');
         setTimeout(() => {
-            toastContainer.remove();
-        }, 3000);
-        
+            this.classList.remove('switching');
+        }, 300);
+
+        // Add highlight animation to device item
+        deviceItem.classList.remove('state-on', 'state-off');
+        void deviceItem.offsetWidth; // Force reflow
+        deviceItem.classList.add(isOn ? 'state-on' : 'state-off');
+
+        // Show toast notification
+        ToastManager.show({
+            title: isOn ? 'Device Activated' : 'Device Deactivated',
+            message: `${deviceName} has been turned ${isOn ? 'ON' : 'OFF'}`,
+            type: isOn ? 'success' : 'off',
+            duration: 3000
+        });
+
         // Log the action
-        console.log(`Device ${deviceId} ${isOn ? 'ON' : 'OFF'}`);
+        console.log(`Device ${deviceId} (${deviceName}) ${isOn ? 'ON' : 'OFF'}`);
     });
 });
 
@@ -136,79 +228,56 @@ const scheduleForm = document.getElementById('scheduleForm');
 if (scheduleForm) {
     scheduleForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         const device = document.getElementById('deviceSelect').value;
         const action = document.getElementById('actionSelect').value;
         const time = document.getElementById('timeInput').value;
-        
-        // Show success message
-        const alertHtml = `
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="bi bi-check-circle-fill me-2"></i>
-                Schedule added successfully! Device will ${action === 'on' ? 'turn on' : 'turn off'} at ${time}.
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        `;
-        
-        const alertContainer = document.createElement('div');
-        alertContainer.style.position = 'fixed';
-        alertContainer.style.top = '100px';
-        alertContainer.style.right = '20px';
-        alertContainer.style.zIndex = '9999';
-        alertContainer.style.minWidth = '300px';
-        alertContainer.innerHTML = alertHtml;
-        document.body.appendChild(alertContainer);
-        
-        setTimeout(() => {
-            alertContainer.remove();
-        }, 5000);
-        
+
+        // Get device name from select option
+        const deviceSelect = document.getElementById('deviceSelect');
+        const deviceName = deviceSelect.options[deviceSelect.selectedIndex].text;
+
+        // Show toast notification
+        ToastManager.show({
+            title: 'Schedule Created',
+            message: `${deviceName} will ${action === 'on' ? 'turn ON' : 'turn OFF'} at ${time}`,
+            type: 'success',
+            duration: 4000
+        });
+
         // Reset form
         scheduleForm.reset();
-        
+
         // Close modal
         const modal = bootstrap.Modal.getInstance(document.getElementById('addScheduleModal'));
         modal.hide();
-        
+
         console.log('Schedule added:', { device, action, time });
     });
 }
 
-// Simulate real-time notifications
+// Simulate real-time notifications using ToastManager
 function showNotification(message, type = 'info') {
-    const iconMap = {
-        'success': 'check-circle-fill',
-        'info': 'info-circle-fill',
-        'warning': 'exclamation-triangle-fill',
-        'danger': 'x-circle-fill'
+    const typeMap = {
+        'success': 'success',
+        'info': 'info',
+        'warning': 'warning',
+        'danger': 'error'
     };
-    
-    const toastHtml = `
-        <div class="toast align-items-center text-white bg-${type} border-0" role="alert">
-            <div class="d-flex">
-                <div class="toast-body">
-                    <i class="bi bi-${iconMap[type]} me-2"></i>
-                    ${message}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-            </div>
-        </div>
-    `;
-    
-    const toastContainer = document.createElement('div');
-    toastContainer.style.position = 'fixed';
-    toastContainer.style.top = '100px';
-    toastContainer.style.right = '20px';
-    toastContainer.style.zIndex = '9999';
-    toastContainer.innerHTML = toastHtml;
-    document.body.appendChild(toastContainer);
-    
-    const toast = new bootstrap.Toast(toastContainer.querySelector('.toast'));
-    toast.show();
-    
-    setTimeout(() => {
-        toastContainer.remove();
-    }, 4000);
+
+    const titleMap = {
+        'success': 'Success',
+        'info': 'Information',
+        'warning': 'Warning',
+        'danger': 'Error'
+    };
+
+    ToastManager.show({
+        title: titleMap[type] || 'Notification',
+        message: message,
+        type: typeMap[type] || 'info',
+        duration: 4000
+    });
 }
 
 // Simulate periodic notifications
