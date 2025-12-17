@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - VRG Power Dash</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24TFZW7DD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X24TFZW7DD');
+    </script>
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo.svg" alt="VRG Power Dash Logo" height="40" class="me-2">
+                <span>VRG Power Dash</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="monitoring.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <!-- Search Bar -->
+                <form class="d-flex ms-3 me-3" role="search" id="searchForm">
+                    <input class="form-control me-2" type="search" placeholder="Search..." id="searchInput">
+                    <button class="btn btn-outline-light" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                
+                <!-- Dark Mode Toggle -->
+                <button class="btn btn-outline-light" id="darkModeToggle" title="Toggle Dark/Light Mode">
+                    <i class="bi bi-moon-stars-fill"></i>
+                </button>
+                
+                <!-- User Account -->
+                <div class="dropdown ms-2">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a></li>
+                        <li><a class="dropdown-item" href="register.html"><i class="bi bi-person-plus me-2"></i>Register</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Help Button -->
+                <button class="btn btn-outline-light ms-2" data-bs-toggle="modal" data-bs-target="#helpModal" title="Help">
+                    <i class="bi bi-question-circle-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">About VRG Power Dash</h1>
+            <p class="lead">Innovating smart home energy solutions for a sustainable future</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Our Mission</h2>
+                    <p class="lead">VRG Power Dash is dedicated to revolutionizing home energy management through innovative IoT technology and intelligent automation.</p>
+                    <p>Our system combines voltage stabilization, remote device control, and real-time energy monitoring to create a safer, more efficient, and environmentally friendly home environment.</p>
+                    <p>As a bachelor's thesis project at Universitatea Politehnica Timișoara, VRG Power Dash represents the culmination of extensive research in embedded systems, IoT connectivity, and sustainable energy practices.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/p2.jpeg" alt="VRG Power Dash System" class="img-fluid rounded shadow">
+                </div>
+            </div>
+
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 order-lg-2">
+                    <h2 class="mb-4">What We Offer</h2>
+                    <ul class="list-unstyled feature-list">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Voltage Stabilization:</strong> Protect your devices from power fluctuations and extend their lifespan.</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Remote Control:</strong> Manage all household appliances from anywhere via web or mobile.</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Energy Monitoring:</strong> Track real-time consumption with detailed analytics.</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Automated Scheduling:</strong> Set up custom schedules to optimize energy usage.</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> <strong>Green Technology:</strong> Reduce your carbon footprint with intelligent power management.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <img src="img/p3.jpeg" alt="System Components" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">See VRG Power Dash in Action</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="ratio ratio-16x9 shadow rounded">
+                        <iframe src="https://www.youtube.com/embed/MhSZQfrwfsQ" 
+                                title="VRG Power Dash Demo" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="text-center mt-3 text-muted">
+                        <small>Watch our demonstration video to see how VRG Power Dash can transform your home energy management.</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="technology-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Technology Stack</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="tech-card text-center">
+                        <i class="bi bi-cpu-fill tech-icon"></i>
+                        <h5>Hardware</h5>
+                        <p>ESP32, Arduino, Sensors, Relays, Power Electronics</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="tech-card text-center">
+                        <i class="bi bi-wifi tech-icon"></i>
+                        <h5>Connectivity</h5>
+                        <p>WiFi, MQTT, HTTP/HTTPS, WebSocket</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="tech-card text-center">
+                        <i class="bi bi-code-slash tech-icon"></i>
+                        <h5>Software</h5>
+                        <p>C++, JavaScript, HTML5, CSS3, Bootstrap</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="tech-card text-center">
+                        <i class="bi bi-cloud-fill tech-icon"></i>
+                        <h5>Cloud</h5>
+                        <p>Real-time Data, Analytics, Remote Access</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team/Creator Section -->
+    <section class="team-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Project Information</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="project-info-card text-center p-5">
+                        <h4>Bachelor's Thesis Project</h4>
+                        <p class="lead mt-3">VRG Power Dash</p>
+                        <p><strong>Institution:</strong> Universitatea Politehnica Timișoara</p>
+                        <p><strong>Faculty:</strong> Automatică și Calculatoare</p>
+                        <p><strong>Department:</strong> Inginerie Electronică și Telecomunicații</p>
+                        <p><strong>Year:</strong> 2025</p>
+                        <p class="mt-4">
+                            This project represents an innovative approach to home energy management, 
+                            combining embedded systems, IoT technology, and sustainable energy practices 
+                            to create a practical solution for modern households.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search Results</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="searchResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Help & Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>About This Page</h6>
+                    <p>Learn about the VRG Power Dash project, its mission, and the technology behind it.</p>
+                    
+                    <h6>Video Content</h6>
+                    <p>Watch the demonstration video to see the system in action.</p>
+                    
+                    <h6>Questions?</h6>
+                    <p>Visit our <a href="contact.html">Contact page</a> for more information.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>VRG Power Dash</h5>
+                    <p>Smart energy management solutions for modern homes.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="me-3" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="me-3" title="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="me-3" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="me-3" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="monitoring.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="bi bi-geo-alt-fill me-2"></i>Timișoara, Romania</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i>info@vrgpowerdash.ro</p>
+                    <p><i class="bi bi-phone-fill me-2"></i>+40 xxx xxx xxx</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 VRG Power Dash. Bachelor's Thesis Project - Universitatea Politehnica Timișoara.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top/Bottom Buttons -->
+    <div class="scroll-buttons">
+        <button class="btn btn-primary scroll-btn" id="scrollToTop" title="Scroll to Top">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+        <button class="btn btn-primary scroll-btn" id="scrollToBottom" title="Scroll to Bottom">
+            <i class="bi bi-arrow-down"></i>
+        </button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

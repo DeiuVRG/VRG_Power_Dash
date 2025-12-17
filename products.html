@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - VRG Power Dash</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24TFZW7DD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X24TFZW7DD');
+    </script>
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo.svg" alt="VRG Power Dash Logo" height="40" class="me-2">
+                <span>VRG Power Dash</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="monitoring.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <!-- Search Bar -->
+                <form class="d-flex ms-3 me-3" role="search" id="searchForm">
+                    <input class="form-control me-2" type="search" placeholder="Search..." id="searchInput">
+                    <button class="btn btn-outline-light" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                
+                <!-- Dark Mode Toggle -->
+                <button class="btn btn-outline-light" id="darkModeToggle" title="Toggle Dark/Light Mode">
+                    <i class="bi bi-moon-stars-fill"></i>
+                </button>
+                
+                <!-- User Account -->
+                <div class="dropdown ms-2">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a></li>
+                        <li><a class="dropdown-item" href="register.html"><i class="bi bi-person-plus me-2"></i>Register</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Help Button -->
+                <button class="btn btn-outline-light ms-2" data-bs-toggle="modal" data-bs-target="#helpModal" title="Help">
+                    <i class="bi bi-question-circle-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Our Products</h1>
+            <p class="lead">Comprehensive solutions for smart home energy management</p>
+        </div>
+    </section>
+
+    <!-- Product Overview -->
+    <section class="products-overview py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="img/p1.jpeg" class="card-img-top" alt="Main Stabilizer Unit">
+                        <div class="card-body">
+                            <h5 class="card-title">VRG Stabilizer Pro</h5>
+                            <p class="card-text">Advanced voltage stabilizer with real-time monitoring and automatic regulation capabilities.</p>
+                            <span class="badge bg-success">Premium</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="img/p2.jpeg" class="card-img-top" alt="Control Module">
+                        <div class="card-body">
+                            <h5 class="card-title">Smart Control Module</h5>
+                            <p class="card-text">IoT-enabled control unit for remote management of all connected devices.</p>
+                            <span class="badge bg-primary">Popular</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="img/p3.jpeg" class="card-img-top" alt="Energy Monitor">
+                        <div class="card-body">
+                            <h5 class="card-title">Energy Monitor Plus</h5>
+                            <p class="card-text">Real-time energy consumption tracking with detailed analytics and reporting.</p>
+                            <span class="badge bg-info">New</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Table -->
+    <section class="components-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Technical Specifications & Components</h2>
+            
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Model</th>
+                            <th>Specifications</th>
+                            <th>Function</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Voltage Stabilizer</strong></td>
+                            <td>VRG-VS-3000</td>
+                            <td>3000W, 220V ±10%, 50/60Hz</td>
+                            <td>Main voltage regulation and stabilization</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Microcontroller</strong></td>
+                            <td>ESP32-WROOM-32</td>
+                            <td>240MHz, WiFi, Bluetooth, 4MB Flash</td>
+                            <td>Central processing and IoT connectivity</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Current Sensor</strong></td>
+                            <td>ACS712-30A</td>
+                            <td>±30A, 5V output, 66mV/A sensitivity</td>
+                            <td>Real-time current measurement</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Voltage Sensor</strong></td>
+                            <td>ZMPT101B</td>
+                            <td>0-250V AC, High accuracy</td>
+                            <td>AC voltage monitoring</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relay Module</strong></td>
+                            <td>4-Channel 5V Relay</td>
+                            <td>10A 250VAC, Optocoupler isolation</td>
+                            <td>Device switching and control</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>LCD Display</strong></td>
+                            <td>20x4 I2C LCD</td>
+                            <td>Blue backlight, HD44780 compatible</td>
+                            <td>Local status display</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Temperature Sensor</strong></td>
+                            <td>DHT22</td>
+                            <td>-40 to 80°C, ±0.5°C accuracy</td>
+                            <td>Ambient temperature monitoring</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Power Supply</strong></td>
+                            <td>HLK-PM01</td>
+                            <td>5V 600mA, AC-DC converter</td>
+                            <td>System power supply</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Buzzer Alarm</strong></td>
+                            <td>Active Piezo 5V</td>
+                            <td>85dB @ 10cm, 2300Hz</td>
+                            <td>Alert notifications</td>
+                            <td><span class="badge bg-warning">Standby</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>SD Card Module</strong></td>
+                            <td>Micro SD SPI</td>
+                            <td>Up to 32GB, FAT32</td>
+                            <td>Data logging and storage</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Features -->
+    <section class="product-features py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Choose VRG Power Dash?</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="feature-box">
+                        <i class="bi bi-shield-check feature-icon-large"></i>
+                        <h4>Reliable Protection</h4>
+                        <p>Our voltage stabilizer protects your valuable electronics from power surges, spikes, and fluctuations, ensuring long-lasting performance.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-box">
+                        <i class="bi bi-wifi feature-icon-large"></i>
+                        <h4>Smart Connectivity</h4>
+                        <p>Connect your devices to the cloud and control them from anywhere using our intuitive web and mobile interfaces.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-box">
+                        <i class="bi bi-bar-chart-line feature-icon-large"></i>
+                        <h4>Detailed Analytics</h4>
+                        <p>Track your energy consumption with detailed graphs and reports, helping you identify savings opportunities.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-box">
+                        <i class="bi bi-leaf feature-icon-large"></i>
+                        <h4>Eco-Friendly</h4>
+                        <p>Optimize your energy usage and reduce your carbon footprint with intelligent automation and scheduling.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search Results</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="searchResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Help & Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Product Information</h6>
+                    <p>This page displays all available products and their technical specifications.</p>
+                    
+                    <h6>Components Table</h6>
+                    <p>Scroll down to view detailed technical specifications of all system components.</p>
+                    
+                    <h6>Need More Information?</h6>
+                    <p>Visit our <a href="contact.html">Contact page</a> or check the <a href="about.html">About page</a> for more details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>VRG Power Dash</h5>
+                    <p>Smart energy management solutions for modern homes.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="me-3" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="me-3" title="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="me-3" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="me-3" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="monitoring.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="bi bi-geo-alt-fill me-2"></i>Timișoara, Romania</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i>info@vrgpowerdash.ro</p>
+                    <p><i class="bi bi-phone-fill me-2"></i>+40 xxx xxx xxx</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 VRG Power Dash. Bachelor's Thesis Project - Universitatea Politehnica Timișoara.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top/Bottom Buttons -->
+    <div class="scroll-buttons">
+        <button class="btn btn-primary scroll-btn" id="scrollToTop" title="Scroll to Top">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+        <button class="btn btn-primary scroll-btn" id="scrollToBottom" title="Scroll to Bottom">
+            <i class="bi bi-arrow-down"></i>
+        </button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

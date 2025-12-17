@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - VRG Power Dash</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X24TFZW7DD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X24TFZW7DD');
+    </script>
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo.svg" alt="VRG Power Dash Logo" height="40" class="me-2">
+                <span>VRG Power Dash</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="monitoring.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <!-- Search Bar -->
+                <form class="d-flex ms-3 me-3" role="search" id="searchForm">
+                    <input class="form-control me-2" type="search" placeholder="Search..." id="searchInput">
+                    <button class="btn btn-outline-light" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+                
+                <!-- Dark Mode Toggle -->
+                <button class="btn btn-outline-light" id="darkModeToggle" title="Toggle Dark/Light Mode">
+                    <i class="bi bi-moon-stars-fill"></i>
+                </button>
+                
+                <!-- User Account -->
+                <div class="dropdown ms-2">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a></li>
+                        <li><a class="dropdown-item" href="register.html"><i class="bi bi-person-plus me-2"></i>Register</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Help Button -->
+                <button class="btn btn-outline-light ms-2" data-bs-toggle="modal" data-bs-target="#helpModal" title="Help">
+                    <i class="bi bi-question-circle-fill"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Monitoring Dashboard</h1>
+            <p class="lead">Real-time monitoring and control of your IoT devices</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-section py-5">
+        <div class="container-fluid">
+            <!-- System Status Cards -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card">
+                        <div class="card-icon voltage-icon">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+                        <div class="card-content">
+                            <h6>Voltage</h6>
+                            <h3 id="voltageValue">220.5 V</h3>
+                            <small class="text-success"><i class="bi bi-check-circle-fill"></i> Normal</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card">
+                        <div class="card-icon current-icon">
+                            <i class="bi bi-activity"></i>
+                        </div>
+                        <div class="card-content">
+                            <h6>Current</h6>
+                            <h3 id="currentValue">8.2 A</h3>
+                            <small class="text-success"><i class="bi bi-check-circle-fill"></i> Normal</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card">
+                        <div class="card-icon power-icon">
+                            <i class="bi bi-speedometer2"></i>
+                        </div>
+                        <div class="card-content">
+                            <h6>Power</h6>
+                            <h3 id="powerValue">1.81 kW</h3>
+                            <small class="text-info"><i class="bi bi-graph-up"></i> Moderate</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="dashboard-card">
+                        <div class="card-icon temp-icon">
+                            <i class="bi bi-thermometer-half"></i>
+                        </div>
+                        <div class="card-content">
+                            <h6>Temperature</h6>
+                            <h3 id="tempValue">24°C</h3>
+                            <small class="text-success"><i class="bi bi-check-circle-fill"></i> Optimal</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Device Control Panel -->
+                <div class="col-lg-6">
+                    <div class="control-panel">
+                        <h4 class="mb-4"><i class="bi bi-toggles"></i> Device Control</h4>
+                        
+                        <div class="device-item">
+                            <div class="device-info">
+                                <i class="bi bi-lightbulb-fill device-icon"></i>
+                                <div>
+                                    <h6 class="mb-0">Living Room Lights</h6>
+                                    <small class="text-muted">Power: 45W</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input device-switch" type="checkbox" id="device1" checked>
+                            </div>
+                        </div>
+
+                        <div class="device-item">
+                            <div class="device-info">
+                                <i class="bi bi-fan device-icon"></i>
+                                <div>
+                                    <h6 class="mb-0">Air Conditioner</h6>
+                                    <small class="text-muted">Power: 1200W</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input device-switch" type="checkbox" id="device2" checked>
+                            </div>
+                        </div>
+
+                        <div class="device-item">
+                            <div class="device-info">
+                                <i class="bi bi-tv-fill device-icon"></i>
+                                <div>
+                                    <h6 class="mb-0">Smart TV</h6>
+                                    <small class="text-muted">Power: 120W</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input device-switch" type="checkbox" id="device3">
+                            </div>
+                        </div>
+
+                        <div class="device-item">
+                            <div class="device-info">
+                                <i class="bi bi-cup-hot-fill device-icon"></i>
+                                <div>
+                                    <h6 class="mb-0">Coffee Maker</h6>
+                                    <small class="text-muted">Power: 800W</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input device-switch" type="checkbox" id="device4">
+                            </div>
+                        </div>
+
+                        <div class="device-item">
+                            <div class="device-info">
+                                <i class="bi bi-pc-display device-icon"></i>
+                                <div>
+                                    <h6 class="mb-0">Desktop Computer</h6>
+                                    <small class="text-muted">Power: 350W</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input device-switch" type="checkbox" id="device5" checked>
+                            </div>
+                        </div>
+
+                        <div class="device-item">
+                            <div class="device-info">
+                                <i class="bi bi-router-fill device-icon"></i>
+                                <div>
+                                    <h6 class="mb-0">WiFi Router</h6>
+                                    <small class="text-muted">Power: 12W</small>
+                                </div>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input device-switch" type="checkbox" id="device6" checked>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Energy Monitoring -->
+                <div class="col-lg-6">
+                    <div class="control-panel">
+                        <h4 class="mb-4"><i class="bi bi-graph-up"></i> Energy Consumption</h4>
+                        
+                        <div class="energy-chart mb-4">
+                            <canvas id="energyChart"></canvas>
+                        </div>
+
+                        <div class="energy-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon bg-primary">
+                                    <i class="bi bi-calendar-day"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <small>Today</small>
+                                    <h5>12.4 kWh</h5>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon bg-success">
+                                    <i class="bi bi-calendar-week"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <small>This Week</small>
+                                    <h5>86.3 kWh</h5>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon bg-info">
+                                    <i class="bi bi-calendar-month"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <small>This Month</small>
+                                    <h5>342.7 kWh</h5>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon bg-warning">
+                                    <i class="bi bi-currency-dollar"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <small>Estimated Cost</small>
+                                    <h5>68.54 RON</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Alerts -->
+            <div class="row g-4 mt-4">
+                <div class="col-lg-12">
+                    <div class="control-panel">
+                        <h4 class="mb-4"><i class="bi bi-bell-fill"></i> System Notifications</h4>
+                        <div class="alert alert-success" role="alert">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <strong>System Healthy:</strong> All devices are operating normally.
+                        </div>
+                        <div class="alert alert-info" role="alert">
+                            <i class="bi bi-info-circle-fill"></i>
+                            <strong>Energy Tip:</strong> Your energy consumption is 15% lower than last month. Great job!
+                        </div>
+                        <div class="alert alert-warning" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            <strong>Schedule Reminder:</strong> Air conditioner scheduled to turn off at 11:00 PM.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Device Scheduler -->
+            <div class="row g-4 mt-4">
+                <div class="col-lg-12">
+                    <div class="control-panel">
+                        <h4 class="mb-4"><i class="bi bi-clock-history"></i> Device Scheduler</h4>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Device</th>
+                                        <th>Action</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><i class="bi bi-lightbulb-fill text-warning"></i> Living Room Lights</td>
+                                        <td>Turn Off</td>
+                                        <td>11:00 PM</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="bi bi-fan text-info"></i> Air Conditioner</td>
+                                        <td>Turn On</td>
+                                        <td>07:00 AM</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="bi bi-cup-hot-fill text-danger"></i> Coffee Maker</td>
+                                        <td>Turn On</td>
+                                        <td>06:30 AM</td>
+                                        <td><span class="badge bg-secondary">Inactive</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#addScheduleModal">
+                            <i class="bi bi-plus-circle"></i> Add New Schedule
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Schedule Modal -->
+    <div class="modal fade" id="addScheduleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Device Schedule</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="scheduleForm">
+                        <div class="mb-3">
+                            <label for="deviceSelect" class="form-label">Device</label>
+                            <select class="form-select" id="deviceSelect" required>
+                                <option value="">Select a device...</option>
+                                <option value="lights">Living Room Lights</option>
+                                <option value="ac">Air Conditioner</option>
+                                <option value="tv">Smart TV</option>
+                                <option value="coffee">Coffee Maker</option>
+                                <option value="pc">Desktop Computer</option>
+                                <option value="router">WiFi Router</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="actionSelect" class="form-label">Action</label>
+                            <select class="form-select" id="actionSelect" required>
+                                <option value="on">Turn On</option>
+                                <option value="off">Turn Off</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="timeInput" class="form-label">Time</label>
+                            <input type="time" class="form-control" id="timeInput" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Schedule</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Results Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Search Results</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="searchResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Help & Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Dashboard Overview</h6>
+                    <p>Monitor real-time voltage, current, power consumption, and temperature.</p>
+                    
+                    <h6>Device Control</h6>
+                    <p>Use the switches to turn devices on/off remotely. Changes are applied instantly.</p>
+                    
+                    <h6>Energy Monitoring</h6>
+                    <p>View your energy consumption statistics and track savings.</p>
+                    
+                    <h6>Scheduling</h6>
+                    <p>Create automated schedules for your devices to save energy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>VRG Power Dash</h5>
+                    <p>Smart energy management solutions for modern homes.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="me-3" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="me-3" title="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="me-3" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="me-3" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="monitoring.html">Dashboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Info</h5>
+                    <p><i class="bi bi-geo-alt-fill me-2"></i>Timișoara, Romania</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i>info@vrgpowerdash.ro</p>
+                    <p><i class="bi bi-phone-fill me-2"></i>+40 xxx xxx xxx</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 VRG Power Dash. Bachelor's Thesis Project - Universitatea Politehnica Timișoara.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top/Bottom Buttons -->
+    <div class="scroll-buttons">
+        <button class="btn btn-primary scroll-btn" id="scrollToTop" title="Scroll to Top">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+        <button class="btn btn-primary scroll-btn" id="scrollToBottom" title="Scroll to Bottom">
+            <i class="bi bi-arrow-down"></i>
+        </button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
